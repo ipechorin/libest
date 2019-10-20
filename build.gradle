@@ -51,7 +51,7 @@ model {
             projectFile.location = "vs/${name}.vcxproj"
                     filtersFile.location = "vs/${name}.vcxproj.filters"
         }
-        solutions.all {
+        solution {
             solutionFile.location = "vs/${name}.sln"
         }
     }
