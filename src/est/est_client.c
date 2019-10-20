@@ -24,14 +24,15 @@
 #include <netinet/in.h>
 #include <netdb.h>
 #else
-#define snprintf _snprintf
-#include <Ws2tcpip.h>
-#include <BaseTsd.h>
-#include <WinDef.h>
-#include <WinNT.h>
+//#define snprintf _snprintf
+#define WIN32_LEAN_AND_MEAN
+#include <WinSock2.h>
+#include <WS2tcpip.h>
+#include <Windows.h>
 #include <wincrypt.h>
 #endif
 #include <sys/types.h>
+#include <openssl/evp.h>
 #include <openssl/ssl.h>
 #include <openssl/rand.h>
 #include "est.h"

@@ -16,7 +16,11 @@
 
 
 #include <stdlib.h>
-#ifdef WIN32
+#ifdef _WIN32
+#define WIN32_LEAN_AND_MEAN
+#include <WinSock2.h>
+#include <WS2tcpip.h>
+#include <Windows.h>
 #ifndef DISABLE_BACKTRACE
 #define _CRTDBG_MAP_ALLOC
 #include <crtdbg.h>

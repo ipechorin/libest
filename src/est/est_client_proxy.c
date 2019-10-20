@@ -16,10 +16,12 @@
 
 #include <stdio.h>
 #include <sys/types.h>
-#ifdef WIN32
+#ifdef _WIN32
 // Watch out! winsock2 and friends has to be ahead of most things
-#   include <winsock2.h>
-#   include <Ws2tcpip.h>
+#   define WIN32_LEAN_AND_MEAN
+#   include <WinSock2.h>
+#   include <WS2tcpip.h>
+#   include <Windows.h>
 #else
 #   include <sys/socket.h>
 #   include <netdb.h>

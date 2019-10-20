@@ -13,7 +13,12 @@
 #ifndef HEADER_EST_SOCK_COMPAT_H
 #define HEADER_EST_SOCK_COMPAT_H
 
-#ifdef WIN32
+#ifdef _WIN32
+
+#   define WIN32_LEAN_AND_MEAN
+#   include <WinSock2.h>
+#   include <WS2tcpip.h>
+#   include <Windows.h>
     /*
      * Winsock defines a different function for closing sockets because not all
      * versions of Windows have file descriptor and socket descriptor

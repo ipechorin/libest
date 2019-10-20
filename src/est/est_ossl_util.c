@@ -73,6 +73,12 @@
  * and donated 'to the cause' along with lots and lots of other fixes to
  * the library. */
 
+#ifdef _WIN32
+#define WIN32_LEAN_AND_MEAN
+#include <WinSock2.h>
+#include <WS2tcpip.h>
+#include <Windows.h>
+#endif
 
 #include <stdio.h>
 #include <openssl/x509v3.h>

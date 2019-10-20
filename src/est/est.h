@@ -26,6 +26,12 @@
 #include <openssl/conf.h>
 #include <openssl/srp.h>
 
+#ifdef _WIN32
+#pragma comment(lib, "Advapi32.lib")
+#pragma comment(lib, "Gdi32.lib")
+#pragma comment(lib, "User32.lib")
+#endif
+
 #ifdef  __cplusplus
 extern "C" {
 #endif
