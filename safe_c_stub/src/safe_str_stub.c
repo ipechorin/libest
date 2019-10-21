@@ -99,6 +99,7 @@ errno_t strcasecmp_s (const char *dest, rsize_t dmax, const char *src, int *indi
     return (EOK);
 }
 
+#ifndef HAVE_MSC_SECURE_CRT
 /*
  * strcat_s()
  *
@@ -110,6 +111,7 @@ errno_t strcat_s (char *dest, rsize_t dmax, const char *src) {
     strncat(dest, src, dmax);
     return (EOK);
 }
+#endif
 
 /*
  * strisdigit_s()
@@ -287,7 +289,7 @@ strspn_s (const char *dest, rsize_t dmax,
     return (EOK);
 }
 
-
+#ifndef HAVE_MSC_SECURE_CRT
 /*
  * strncat_s()
  *
@@ -422,6 +424,7 @@ errno_t strncpy_s (char *dest, rsize_t dmax, const char *src, rsize_t slen)
 rsize_t strnlen_s (const char *s, rsize_t smax) {
     return (strnlen(s, smax));
 }
+#endif
 
 /*
  * strstr_s()
@@ -436,6 +439,7 @@ errno_t strstr_s (char *dest, rsize_t dmax,
     return (*substring ? EOK : ESNOTFND);
 }
 
+#ifndef HAVE_MSC_SECURE_CRT
 /*
  * strtok_s()
  *
@@ -572,3 +576,4 @@ strtok_s (char *dest, rsize_t *dmax, const char *src, char **ptr)
     *dmax = dlen;
     return (ptoken);
 }
+#endif

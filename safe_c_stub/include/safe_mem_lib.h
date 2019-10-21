@@ -37,6 +37,10 @@
 #include <stdint.h>
 #include "safe_lib_errno.h"
 
+#if (defined(_WIN32) && defined(__STDC_WANT_SECURE_LIB__) && __STDC_WANT_SECURE_LIB__ != 0)
+#define HAVE_MSC_SECURE_CRT 1
+#endif
+
 /* Defining the RSIZE_MAX macro */
 #ifndef RSIZE_MAX
 #define RSIZE_MAX         SIZE_MAX/2
@@ -55,9 +59,10 @@
 #define RSIZE_MAX_MEM32    ( RSIZE_MAX_MEM/4 )
 #endif
 
-
+#ifndef HAVE_MSC_SECURE_CRT
 /* copy memory */
 extern errno_t memcpy_s(void *dest, rsize_t dmax, const void *src, rsize_t slen);
+#endif
 
 /* compare memory */
 extern errno_t memcmp_s(const void *dest, rsize_t dmax, const void *src, rsize_t slen, int *diff);
@@ -68,7 +73,9 @@ extern errno_t memset_s (void *s, rsize_t smax, int c, rsize_t n);
 /* clear bytes */
 extern errno_t memzero_s(void *dest, rsize_t dmax);
 
+#ifndef HAVE_MSC_SECURE_CRT
 /* Move bytes */
 extern errno_t memmove_s(void *dest, rsize_t dmax, const void *src, rsize_t smax);
+#endif
 
 #endif /* __SAFE_MEM_LIB_H__ */

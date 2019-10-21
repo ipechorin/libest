@@ -37,6 +37,10 @@
 #include <stdint.h>
 #include "safe_lib_errno.h"
 
+#if (defined(_WIN32) && defined(__STDC_WANT_SECURE_LIB__) && __STDC_WANT_SECURE_LIB__ != 0)
+#define HAVE_MSC_SECURE_CRT 1
+#endif
+
 /**
  * The shortest string is a null string!! 
  */
@@ -60,6 +64,8 @@ extern errno_t strcmp_s(const char *dest, rsize_t dmax, const char *src, int *in
 /* Case insensitive string compare */
 extern errno_t strcasecmp_s (const char *dest, rsize_t dmax, const char *src, int *indicator);
 
+#ifndef HAVE_MSC_SECURE_CRT
+
 /* string concatenate */
 extern errno_t strcat_s(char *dest, rsize_t dmax, const char *src);
 
@@ -75,11 +81,17 @@ extern errno_t strncpy_s (char *dest, rsize_t dmax, const char *src, rsize_t sle
 /* string length */
 extern rsize_t strnlen_s(const char *s, rsize_t smax);
 
+#endif
+
 /* find a substring */ 
 extern errno_t strstr_s(char *dest, rsize_t dmax, const char *src, rsize_t slen, char **substring);
 
+#ifndef HAVE_MSC_SECURE_CRT
+
 /* string tokenizer */
 extern char *strtok_s(char *dest, rsize_t *dmax, const char *src, char **ptr);
+
+#endif
 
 /* get span until character in string*/
 extern errno_t strcspn_s(const char *dest, rsize_t dmax, const char *src,  rsize_t slen, rsize_t *count);

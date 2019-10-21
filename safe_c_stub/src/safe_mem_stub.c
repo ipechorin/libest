@@ -57,6 +57,8 @@ errno_t memzero_s(void *dest, rsize_t dmax)
     return (EOK);
 }
 
+
+#ifndef HAVE_MSC_SECURE_CRT
 /*
  * memcpy_s()
  *
@@ -68,6 +70,7 @@ errno_t memcpy_s (void *dest, rsize_t dmax, const void *src, rsize_t slen) {
     memcpy(dest, src, slen);
     return (EOK);
 }
+#endif
 
 /*
  * memcmp_s()
@@ -83,7 +86,7 @@ errno_t memcmp_s (const void *dest, rsize_t dmax, const void *src, rsize_t slen,
     return (EOK);
 }
 
-
+#ifndef HAVE_MSC_SECURE_CRT
 /*
  * memmove_s()
  *
@@ -134,6 +137,7 @@ errno_t memmove_s (void *dest, rsize_t dmax, const void *src, rsize_t smax)
 
     return (EOK);
 }
+#endif
 
 /*
  * memset_s()

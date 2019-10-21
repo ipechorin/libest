@@ -130,7 +130,6 @@ model {
                 cCompiler.define "HAVE_STDINT"
                 cCompiler.define "LIBEST_EXPORTS", "1"
                 cCompiler.define "DISABLE_BACKTRACE"
-                cCompiler.define "__STDC_WANT_SECURE_LIB__" , "0"
                 cCompiler.define "PACKAGE_STRING", "\"libest 2.1.0\""               
                 cCompiler.define "DISABLE_PTHREADS", "1"
                 cCompiler.define "_CRT_SECURE_NO_WARNINGS"
