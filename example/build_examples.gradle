@@ -55,9 +55,9 @@ model {
                 }
             }
             binaries.all {
-                lib library: "libcrypto", linkage: "shared"
-                lib library: "libssl", linkage: "shared"
-                lib library: "est", linkage: "shared"
+                lib library: "libcrypto", linkage: "static"
+                lib library: "libssl", linkage: "static"
+                lib library: "est", linkage: "static"
             }               
         }
         estclient_simple(NativeExecutableSpec) {
@@ -75,9 +75,9 @@ model {
                 }
             }
             binaries.all {
-                lib library: "libcrypto", linkage: "shared"
-                lib library: "libssl", linkage: "shared"
-                lib library: "est", linkage: "shared"
+                lib library: "libcrypto", linkage: "static"
+                lib library: "libssl", linkage: "static"
+                lib library: "est", linkage: "static"
             }               
         }
         estserver(NativeExecutableSpec) {
@@ -95,9 +95,9 @@ model {
                 }
             }
             binaries.all {
-                lib library: "libcrypto", linkage: "shared"
-                lib library: "libssl", linkage: "shared"
-                lib library: "est", linkage: "shared"
+                lib library: "libcrypto", linkage: "static"
+                lib library: "libssl", linkage: "static"
+                lib library: "est", linkage: "static"
             }               
         }
         estproxy(NativeExecutableSpec) {
@@ -115,9 +115,9 @@ model {
                 }
             }
             binaries.all {
-                lib library: "libcrypto", linkage: "shared"
-                lib library: "libssl", linkage: "shared"
-                lib library: "est", linkage: "shared"
+                lib library: "libcrypto", linkage: "static"
+                lib library: "libssl", linkage: "static"
+                lib library: "est", linkage: "static"
             }               
         }        
 
