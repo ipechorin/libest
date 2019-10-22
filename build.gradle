@@ -149,7 +149,7 @@ model {
                 cCompiler.define "PACKAGE_STRING", "\"libest 2.1.0\""               
                 cCompiler.define "DISABLE_PTHREADS", "1"
                 cCompiler.define "_CRT_SECURE_NO_WARNINGS"
-                cCompiler.args "/GS", "/GL", "/analyze-", "/W3", "/Gy", "/Zc:wchar_t", "/Zi", "/Gm-", "/fp:precise", "/errorReport:prompt", "/WX-", "/Zc:forScope", "/Gd", "/Oy-","/Oi","/MD", "/EHsc", "/nologo", "/FS"
+                cCompiler.args "/GS", "/analyze-", "/W3", "/Gy", "/Zc:wchar_t", "/Zi", "/fp:precise", "/errorReport:prompt", "/WX-", "/Zc:forScope", "/Gd", "/Oy-","/Oi", "/EHsc", "/nologo", "/FS"
                 linker.args "/DYNAMICBASE","/SAFESEH", "/LTCG", "/NXCOMPAT"
             }
         }
