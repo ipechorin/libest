@@ -11,7 +11,7 @@
 #ifndef HEADER_EST_H
 #define HEADER_EST_H
 
-#ifdef WIN32
+#if defined(WIN32) && !defined(LIBEST_STATIC)
 #ifdef LIBEST_EXPORTS
 #define LIBEST_API __declspec(dllexport) 
 #else

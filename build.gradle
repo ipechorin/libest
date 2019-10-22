@@ -103,8 +103,25 @@ model {
                 lib library: "libssl", linkage: "shared" 
                
             }
+            binaries.withType(StaticLibraryBinarySpec) { 
+                if (flavor == flavors.debug){
+                    cCompiler.args "/MDd"
+                }
+                if (flavor == flavors.release){
+                    cCompiler.args "/MD"
+                }
+                cCompiler.define "LIBEST_STATIC", "1"
+            }
+            binaries.withType(SharedLibraryBinarySpec) { 
+                if (flavor == flavors.debug){
+                    cCompiler.args "/MDd"
+                }
+                if (flavor == flavors.release){
+                    cCompiler.args "/MD"
+                }
+                cCompiler.define "LIBEST_EXPORTS", "1"
+            }
         }
-     
     }
 }
 
@@ -128,7 +145,6 @@ model {
                 }                
                 cCompiler.define "WIN32"
                 cCompiler.define "HAVE_STDINT"
-                cCompiler.define "LIBEST_EXPORTS", "1"
                 cCompiler.define "DISABLE_BACKTRACE"
                 cCompiler.define "PACKAGE_STRING", "\"libest 2.1.0\""               
                 cCompiler.define "DISABLE_PTHREADS", "1"

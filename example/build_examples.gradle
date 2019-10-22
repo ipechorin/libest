@@ -5,26 +5,32 @@ model {
         libs(PrebuiltLibraries) {
             libcrypto {
                 headers.srcDir System.getenv().SSL_DIR + "\\include"
-                        binaries.withType(SharedLibraryBinary) {
-                    sharedLibraryFile =
-                            file(System.getenv().SSL_DIR + "\\bin\\libeay32.dll")
-                            sharedLibraryLinkFile = file(System.getenv().SSL_DIR + "\\lib\\libeay32.lib")
+                binaries.withType(SharedLibraryBinary) {
+                    sharedLibraryFile = file(System.getenv().SSL_DIR + "\\bin\\libeay32.dll")
+                    sharedLibraryLinkFile = file(System.getenv().SSL_DIR + "\\lib\\libeay32.lib")
+                }
+                binaries.withType(StaticLibraryBinary) {
+                    staticLibraryFile = file(System.getenv().SSL_DIR + "\\lib\\libeay32.lib")
                 }
             }
             libssl {
                 headers.srcDir System.getenv().SSL_DIR + "\\include"
-                        binaries.withType(SharedLibraryBinary) {
-                    sharedLibraryFile =
-                            file(System.getenv().SSL_DIR + "\\bin\\ssleay32.dll")
-                            sharedLibraryLinkFile = file(System.getenv().SSL_DIR + "\\lib\\ssleay32.lib")
+                binaries.withType(SharedLibraryBinary) {
+                    sharedLibraryFile = file(System.getenv().SSL_DIR + "\\bin\\ssleay32.dll")
+                    sharedLibraryLinkFile = file(System.getenv().SSL_DIR + "\\lib\\ssleay32.lib")
+                }
+                binaries.withType(StaticLibraryBinary) {
+                    staticLibraryFile = file(System.getenv().SSL_DIR + "\\lib\\ssleay32.lib")
                 }
             }            
             est {
                 headers.srcDir "../src/est"
-                        binaries.withType(SharedLibraryBinary) {
-                    sharedLibraryFile =
-                            file(System.getenv().EST_DIR + "\\est.dll")
-                            sharedLibraryLinkFile = file(System.getenv().EST_DIR + "\\est.lib")
+                binaries.withType(SharedLibraryBinary) {
+                    sharedLibraryFile = file(System.getenv().EST_DIR + "\\est.dll")
+                    sharedLibraryLinkFile = file(System.getenv().EST_DIR + "\\est.lib")
+                }
+                binaries.withType(StaticLibraryBinary) {
+                    staticLibraryFile = file(System.getenv().EST_DIR + "\\est.lib")
                 }
             }
         }
@@ -134,7 +140,6 @@ model {
             else if(toolChain in VisualCpp) {
                 cCompiler.define "WIN32"
                 cCompiler.define "DISABLE_TSEARCH"
-                cCompiler.define "__STDC_WANT_SECURE_LIB__" , "0"
                 cCompiler.define "DISABLE_PTHREADS", "1"
                 cCompiler.args "/GS", "/GL", "/analyze-", "/W3", "/Gy", "/Zc:wchar_t", "/Zi", "/Gm-", "/fp:precise", "/errorReport:prompt", "/WX-", "/Zc:forScope", "/Gd", "/Oy-","/Oi","/MD", "/EHsc", "/nologo", "/FS"
                 linker.args "/SAFESEH", "/LTCG", "/NXCOMPAT" 

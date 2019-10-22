@@ -1,3 +1,5 @@
 /vs
 /.gradle
 /build
+/example/.gradle/*
+/example/build/*
