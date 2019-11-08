@@ -937,7 +937,11 @@ static void mg_parse_auth_hdr_basic (struct mg_connection *conn,
         /* Started with a userid, 
          * Parse the username and password, which are separated by a ":"
          */
+#ifndef _WIN32
         value = strtok_s(both, &len, sep, &save_ptr);
+#else
+        value = strtok_s(both, sep, &save_ptr);
+#endif
         if (value) {
             ah->user = STRNDUP(value, MAX_UIDPWD);
             ah->pwd = STRNDUP(save_ptr, MAX_UIDPWD);
